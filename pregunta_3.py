@@ -2,6 +2,7 @@
 diferencias en las distintas posiciones: por ejemplo, para los arqueros?'''
 
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 
 df_1 = pd.read_csv('fifa2021_1.csv')
@@ -12,13 +13,19 @@ data = pd.merge(df_1, df_2, how='outer')
 
 def graficar_por_posicion(titulo, posicion):
     df = data[data['player_positions'].str.contains(posicion)]
-    correlation = df['age'].corr(df['overall'])
+
+    x_var = 'age'
+    y_var = 'overall'
+
+    x = df[x_var]
+    y = df[y_var]
+
+    correlation = x.corr(y)
 
     if correlation > 0.5:
-        plt.figure(figsize=(12, 8))
-        plt.scatter(df['age'], df['overall'])
-        plt.xlabel('Edad')
-        plt.ylabel('Desempeño (Overall)')
+        plt.scatter(x, y)
+        plt.xlabel(x_var)
+        plt.ylabel(y_var)
         plt.title(f'{titulo}\nCorrelacion: {correlation:.2f}')
         plt.show()
 
