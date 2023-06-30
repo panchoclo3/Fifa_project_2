@@ -41,8 +41,3 @@ def graficar(columna, titulo):
 # graficar('value_eur', 'Valor en euros')
 # graficar('wage_eur', 'Salario en euros')
 graficar('league_rank', 'Ranking de la liga')
-
-
-# test de hipotesis: los brasileños son los mejores jugadores de latinoamerica
-
-# H0: los brasileños no son los mejores jugadores de latinoamerica
